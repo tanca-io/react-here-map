@@ -40,6 +40,7 @@ class HMap extends React.Component {
     map.removeObjects(map.getObjects ());
   }
   getPositionByXandY(x, y){
+    const { map} = this.state.builder;
     return map.screenToGeo(x, y);
   }
 
