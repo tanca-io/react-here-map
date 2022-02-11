@@ -22,6 +22,7 @@ function Marker(props) {
       objectEvents = _merge.objectEvents,
       platform = _merge.platform,
       ui = _merge.ui,
+      draggable = _merge.draggable,
       __options = _merge.__options;
 
   var _options = options;
@@ -46,7 +47,11 @@ function Marker(props) {
   } // Create an icon, an object holding the latitude and longitude, and a marker:
 
 
-  var _marker = updateMarker && marker ? marker : new H.map.Marker(coords, _options); // Checks if object of same coordinates have been added formerly
+  var _marker = updateMarker && marker ? marker : new H.map.Marker(coords, _options);
+
+  if (draggable) {
+    _marker.draggable = true;
+  } // Checks if object of same coordinates have been added formerly
 
 
   var addedObjects = map.getObjects();
