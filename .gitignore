@@ -3,4 +3,3 @@ node_modules
 _docs/
 yarn-error.log
 yarn.lock
-dist
