@@ -17,6 +17,7 @@ function Marker(props) {
     objectEvents,
     platform,
     ui,
+    draggable,
     __options
   } = merge(
     { setViewBounds: true, updateMarker: false, marker: null, getMarker() {} },
@@ -49,6 +50,10 @@ function Marker(props) {
   const _marker =
     updateMarker && marker ? marker : new H.map.Marker(coords, _options);
 
+  if (draggable) {
+    _marker.draggable = true;
+  }
+    
   // Checks if object of same coordinates have been added formerly
   const addedObjects = map.getObjects();
   const objectExists = addedObjects.some(object => {
