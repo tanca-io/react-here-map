@@ -8,7 +8,8 @@ function Marker(props) {
     setViewBounds: true,
     updateMarker: false,
     marker: null,
-    getMarker: function getMarker() {}
+    getMarker: function getMarker() {},
+    draggable: false
   }, props),
       icon = _merge.icon,
       map = _merge.map,
@@ -50,7 +51,8 @@ function Marker(props) {
   var _marker = updateMarker && marker ? marker : new H.map.Marker(coords, _options);
 
   if (draggable) {
-    _marker.draggable = true;
+    _marker.draggable = draggable;
+    _options.volatility = draggable;
   } // Checks if object of same coordinates have been added formerly
 
 
