@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import merge from "lodash.merge";
 import initMapObjectEvents from "../../../libs/initMapObjectEvents";
+import { getBehavior } from "../../../libs/initInteraction";
 
 function Marker(props) {
   var _merge = merge({
@@ -53,6 +54,39 @@ function Marker(props) {
   if (draggable) {
     _marker.draggable = draggable;
     _options.volatility = draggable;
+    map.addEventListener('dragstart', function (ev) {
+      var target = ev.target,
+          pointer = ev.currentPointer;
+
+      if (target instanceof H.map.Marker) {
+        var targetPosition = map.geoToScreen(target.getGeometry());
+        target['offset'] = new H.math.Point(pointer.viewportX - targetPosition.x, pointer.viewportY - targetPosition.y);
+        var interaction = getBehavior(); //if(interaction.disable){
+
+        interaction.disable(); //}
+      }
+    }, false); // re-enable the default draggability of the underlying map
+    // when dragging has completed
+
+    map.addEventListener('dragend', function (ev) {
+      var target = ev.target;
+
+      if (target instanceof H.map.Marker) {
+        var interaction = getBehavior(); //if(interaction.enable){
+
+        interaction.enable(); //}
+      }
+    }, false); // Listen to the drag event and move the position of the marker
+    // as necessary
+
+    map.addEventListener('drag', function (ev) {
+      var target = ev.target,
+          pointer = ev.currentPointer;
+
+      if (target instanceof H.map.Marker) {
+        target.setGeometry(map.screenToGeo(pointer.viewportX - target['offset'].x, pointer.viewportY - target['offset'].y));
+      }
+    }, false);
   } // Checks if object of same coordinates have been added formerly
 
 

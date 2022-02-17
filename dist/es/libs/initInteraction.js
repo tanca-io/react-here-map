@@ -2,8 +2,10 @@
 // interactive and useEvents must be true to use map events
 var changeCursorToGrab = function changeCursorToGrab() {};
 
+var behavior;
 export default (function (map, interactive, useEvents, mapEvents) {
-  var behavior = interactive ? new H.mapevents.Behavior(new H.mapevents.MapEvents(map)) : null;
+  behavior = //false;
+  interactive ? new H.mapevents.Behavior(new H.mapevents.MapEvents(map)) : null;
 
   if (useEvents && interactive) {
     for (var type in mapEvents) {
@@ -23,3 +25,6 @@ export default (function (map, interactive, useEvents, mapEvents) {
 
   return behavior;
 });
+export function getBehavior() {
+  return behavior;
+}
