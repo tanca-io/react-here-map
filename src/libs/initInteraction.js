@@ -1,9 +1,10 @@
 // Add interactivity if set from the options
 // interactive and useEvents must be true to use map events
 const changeCursorToGrab = () => {};
-
+let behavior;
 export default (map, interactive, useEvents, mapEvents) => {
-  let behavior = interactive
+  behavior = //false;
+  interactive
     ? new H.mapevents.Behavior(new H.mapevents.MapEvents(map))
     : null;
   if (useEvents && interactive) {
@@ -20,3 +21,7 @@ export default (map, interactive, useEvents, mapEvents) => {
   }
   return behavior;
 };
+
+export function getBehavior(){
+  return behavior;
+}
