@@ -39,6 +39,17 @@ class HMap extends React.Component {
     const { map} = this.state.builder;
     map.removeObjects(map.getObjects ());
   }
+  removeMarkerByCoords(coords){
+    const { map} = this.state.builder;
+    const mapObjects=map.getObjects();
+    for (var i = 0; i < mapObjects.length; i++) {
+      if (mapObjects[i] instanceof H.map.Marker) {
+        if(mapObjects[i].b.lat===coords.lat && mapObjects[i].b.lng===coords.lng ){
+          map.removeObject(mapObjects[i]);
+        }
+      }
+    }
+  }
   getPositionByXandY(x, y){
     const { map} = this.state.builder;
     return map.screenToGeo(x, y);

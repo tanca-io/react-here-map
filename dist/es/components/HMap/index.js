@@ -90,6 +90,20 @@ var HMap = /*#__PURE__*/function (_React$Component) {
       map.removeObjects(map.getObjects());
     }
   }, {
+    key: "removeMarkerByCoords",
+    value: function removeMarkerByCoords(coords) {
+      var map = this.state.builder.map;
+      var mapObjects = map.getObjects();
+
+      for (var i = 0; i < mapObjects.length; i++) {
+        if (mapObjects[i] instanceof H.map.Marker) {
+          if (mapObjects[i].b.lat === coords.lat && mapObjects[i].b.lng === coords.lng) {
+            map.removeObject(mapObjects[i]);
+          }
+        }
+      }
+    }
+  }, {
     key: "getPositionByXandY",
     value: function getPositionByXandY(x, y) {
       var map = this.state.builder.map;

@@ -54,6 +54,18 @@ function Marker(props) {
     if (draggable) {
       _marker.draggable = draggable;
       _options.volatility = draggable;
+
+      var supportsPassive = false;
+try {
+  var opts = Object.defineProperty({}, 'passive', {
+    get: function() {
+      supportsPassive = true;
+    }
+  });
+  window.addEventListener("testPassive", null, opts);
+  window.removeEventListener("testPassive", null, opts);
+} catch (e) {}
+
       map.addEventListener('dragstart', function(ev) {
         var target = ev.target,
             pointer = ev.currentPointer;
@@ -65,7 +77,7 @@ function Marker(props) {
             interaction.disable();
           //}
         }
-      }, false);
+      }, supportsPassive ? { passive: true } : false);
 
           // re-enable the default draggability of the underlying map
       // when dragging has completed
@@ -77,7 +89,7 @@ function Marker(props) {
             interaction.enable();
           //}
         }
-      }, false);
+      }, supportsPassive ? { passive: true } : false);
 
       // Listen to the drag event and move the position of the marker
       // as necessary
@@ -87,7 +99,7 @@ function Marker(props) {
         if (target instanceof H.map.Marker) {
           target.setGeometry(map.screenToGeo(pointer.viewportX - target['offset'].x, pointer.viewportY - target['offset'].y));
         }
-      }, false);
+      }, supportsPassive ? { passive: true } : false);
     }
     
   // Checks if object of same coordinates have been added formerly
