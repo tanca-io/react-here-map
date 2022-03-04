@@ -54,6 +54,15 @@ class HMap extends React.Component {
     const { map} = this.state.builder;
     return map.screenToGeo(x, y);
   }
+  setCenter(latLng) {
+    const { map} = this.state.builder;
+    map.setCenter(new H.geo.Point(latLng.lat, latLng.lng), true);
+  }
+
+  setZoom(value){
+    const { map} = this.state.builder;
+        map.setZoom(value, true);
+}
 
   render() {
     const { style, loadingEl } = this.props;
