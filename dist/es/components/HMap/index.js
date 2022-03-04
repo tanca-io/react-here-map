@@ -110,6 +110,18 @@ var HMap = /*#__PURE__*/function (_React$Component) {
       return map.screenToGeo(x, y);
     }
   }, {
+    key: "setCenter",
+    value: function setCenter(latLng) {
+      var map = this.state.builder.map;
+      map.setCenter(new H.geo.Point(latLng.lat, latLng.lng), true);
+    }
+  }, {
+    key: "setZoom",
+    value: function setZoom(value) {
+      var map = this.state.builder.map;
+      map.setZoom(value, true);
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this$props = this.props,
