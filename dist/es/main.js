@@ -68,7 +68,6 @@ var circleOptions = {
     // Color of the perimeter
     lineWidth: 2,
     fillColor: "rgba(0, 128, 0, 0.7)" // Color of the circle
-
   }
 };
 var rectangleOptions = {
@@ -82,15 +81,14 @@ var polygonPoints = [52, 13, 100, 48, 2, 100, 48, 16, 100, 52, 13, 100];
 var geoCodeParams = {
   searchText: "200 S Mathilda Ave, Sunnyvale, CA"
 };
-
 var GeoMarker = function GeoMarker(_ref) {
   var map = _ref.map,
-      platform = _ref.platform,
-      ui = _ref.ui,
-      lat = _ref.lat,
-      lng = _ref.lng,
-      location = _ref.location,
-      key = _ref.key;
+    platform = _ref.platform,
+    ui = _ref.ui,
+    lat = _ref.lat,
+    lng = _ref.lng,
+    location = _ref.location,
+    key = _ref.key;
   return /*#__PURE__*/React.createElement(HMapMarker, {
     coords: {
       lat: lat,
@@ -101,24 +99,22 @@ var GeoMarker = function GeoMarker(_ref) {
     key: key,
     icon: icon
   });
-}; // Create the parameters for the reverse geocoding request:
+};
 
-
+// Create the parameters for the reverse geocoding request:
 var reverseGeoCodingParameters = {
   prox: "52.5309,13.3847,150",
   mode: "retrieveAddresses",
   maxresults: 1
 };
-
 var ReverseGeoMarker = function ReverseGeoMarker(_ref2) {
   var map = _ref2.map,
-      platform = _ref2.platform,
-      ui = _ref2.ui,
-      lat = _ref2.lat,
-      lng = _ref2.lng,
-      location = _ref2.location,
-      key = _ref2.key;
-
+    platform = _ref2.platform,
+    ui = _ref2.ui,
+    lat = _ref2.lat,
+    lng = _ref2.lng,
+    location = _ref2.location,
+    key = _ref2.key;
   // <HMapMarker
   //   coords={{ lat, lng }}
   //   map={map}
@@ -134,19 +130,17 @@ var ReverseGeoMarker = function ReverseGeoMarker(_ref2) {
       content: location.Location.Address.Label
     }));
   }
-
   return null;
 };
-
 var LandmarkGeoMarker = function LandmarkGeoMarker(_ref3) {
   var map = _ref3.map,
-      platform = _ref3.platform,
-      ui = _ref3.ui,
-      lat = _ref3.lat,
-      lng = _ref3.lng,
-      location = _ref3.location,
-      key = _ref3.key,
-      _location = _ref3._location;
+    platform = _ref3.platform,
+    ui = _ref3.ui,
+    lat = _ref3.lat,
+    lng = _ref3.lng,
+    location = _ref3.location,
+    key = _ref3.key,
+    _location = _ref3._location;
   ui.addBubble(new H.ui.InfoBubble({
     lat: lat,
     lng: lng
@@ -154,13 +148,13 @@ var LandmarkGeoMarker = function LandmarkGeoMarker(_ref3) {
     content: _location.Name
   }));
   return null;
-}; // Create the parameters for the landmark search request:
-
-
+};
+// Create the parameters for the landmark search request:
 var landmarkSearchParameters = {
   searchText: "TXL"
-}; // Create the parameters for the routing request:
+};
 
+// Create the parameters for the routing request:
 var routeParams = {
   // The routing mode:
   mode: "fastest;car",
@@ -184,23 +178,23 @@ var routeLineOptions = {
     length: 0.7
   }
 };
-
 var RouteMarker = function RouteMarker(_ref4) {
   var map = _ref4.map,
-      platform = _ref4.platform,
-      ui = _ref4.ui,
-      route = _ref4.route,
-      key = _ref4.key,
-      routeShape = _ref4.routeShape;
+    platform = _ref4.platform,
+    ui = _ref4.ui,
+    route = _ref4.route,
+    key = _ref4.key,
+    routeShape = _ref4.routeShape;
   // Retrieve the mapped positions of the requested waypoints:
   var startPoint = route.waypoint[0].mappedPosition;
-  var endPoint = route.waypoint[1].mappedPosition; // Create a marker for the start point:
+  var endPoint = route.waypoint[1].mappedPosition;
 
+  // Create a marker for the start point:
   var startMarker = {
     lat: startPoint.latitude,
     lng: startPoint.longitude
-  }; // Create a marker for the end point:
-
+  };
+  // Create a marker for the end point:
   var endMarker = {
     lat: endPoint.latitude,
     lng: endPoint.longitude
@@ -223,22 +217,20 @@ var RouteMarker = function RouteMarker(_ref4) {
     setViewBounds: false
   }));
 };
-
 var isoRoutingParams = {
   mode: "fastest;car;",
   start: "geo!52.5,13.4",
   range: "900",
   rangetype: "time"
 };
-
 var RouteMarkerIso = function RouteMarkerIso(_ref5) {
   var map = _ref5.map,
-      platform = _ref5.platform,
-      ui = _ref5.ui,
-      route = _ref5.route,
-      routeShape = _ref5.routeShape,
-      center = _ref5.center,
-      component = _ref5.component;
+    platform = _ref5.platform,
+    ui = _ref5.ui,
+    route = _ref5.route,
+    routeShape = _ref5.routeShape,
+    center = _ref5.center,
+    component = _ref5.component;
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Polygon, {
     points: routeShape,
     options: polygonOptions,
@@ -254,7 +246,6 @@ var RouteMarkerIso = function RouteMarkerIso(_ref5) {
     setViewBounds: false
   }));
 };
-
 ReactDOM.render( /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(HMapPlatform, {
   app_id: "2Ts3vDUTLPW8kNUtyFRY",
   app_code: "MDivMVFtNkpim-dWuetlWw",

@@ -23,15 +23,12 @@ var itemStyle = css({
     cursor: "pointer"
   }
 });
-
 function PlaceItem(props) {
   var item = props.item,
-      itemClass = props.itemClass,
-      iconClass = props.iconClass,
-      getItem = props.getItem;
-
+    itemClass = props.itemClass,
+    iconClass = props.iconClass,
+    getItem = props.getItem;
   var _getItem = typeof getItem == "function" ? getItem : function () {};
-
   return /*#__PURE__*/React.createElement("div", {
     className: "".concat(itemStyle, " ").concat(itemClass),
     onClick: function onClick(e) {
@@ -42,7 +39,6 @@ function PlaceItem(props) {
     src: item.icon
   }), item.title);
 }
-
 PlaceItem.propTypes = {
   item: PropTypes.object.isRequired,
   itemClass: PropTypes.string,

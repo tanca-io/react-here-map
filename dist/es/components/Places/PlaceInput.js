@@ -20,11 +20,10 @@ var _style = {
   borderRadius: ".25rem",
   transition: "border-color .15s ease-in-out, box-shadow .15s ease-in-out"
 };
-
 function PlaceInput(_ref) {
   var getValue = _ref.getValue,
-      style = _ref.style,
-      className = _ref.className;
+    style = _ref.style,
+    className = _ref.className;
   style = merge(_style, style);
   return /*#__PURE__*/React.createElement("input", {
     className: className,
@@ -35,7 +34,6 @@ function PlaceInput(_ref) {
     }
   });
 }
-
 handleInputChange.propTypes = {
   getValue: PropTypes.func.isRequired,
   className: PropTypes.string,

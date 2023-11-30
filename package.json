@@ -41,7 +41,7 @@
   },
   "homepage": "https://github.com/daiyam/react-here-map#readme",
   "dependencies": {
-    "@limistah/here-map-js": "^3.1.0",
+    "@limistah/here-map-js": "https://github.com/tanca-io/here-map-js",
     "glamor": "^2.20.40",
     "lodash.debounce": "^4.0.8",
     "lodash.merge": "^4.6.2",
@@ -75,7 +75,6 @@
     "cross-env": "^5.2.0",
     "eslint": "4.x",
     "eslint-config-airbnb": "^17.1.1",
-    "eslint-config-okonet": "^7.0.2",
     "eslint-config-prettier": "2.x",
     "eslint-plugin-flowtype": "2.x",
     "eslint-plugin-import": "2.x",
@@ -112,8 +111,13 @@
     "styled-components": "^4.1.2",
     "tslint": "^5.9.1",
     "typescript": "^3.2.4",
-    "webpack": "^4.29.5",
-    "webpack-blocks": "^2.0.1"
+    "webpack": "^4.44.0",
+    "webpack-blocks": "^2.0.0",
+    "node-sass": "^6.0.0",
+    "sass-loader": "^10"
+  },
+  "resolutions": {
+    "webpack-blocks": "^2.0.0"
   },
   "repository": {
     "type": "git",
